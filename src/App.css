@@ -1,0 +1,47 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: 0;
+}
+
+.page{
+    padding: 30px 0 ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.input-for-sheet{
+    width: 100%;
+    max-width: 400px;
+}
+.form{
+    width: 100%;
+}
+.Form-item{
+    width: 100%;
+}
+.section{
+    position: relative;
+}
+
+.download-btn{
+    top: 0;
+    right: 0;
+    position: absolute;
+}
+.mail-btn{
+    top: 0;
+    left: 0;
+    position: absolute;
+}
+
+
+
+
+@media print{
+    .download-btn, .mail-btn{
+        display: none;
+    }
+}
