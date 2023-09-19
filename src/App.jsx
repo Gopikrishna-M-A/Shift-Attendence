@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css'
 import Home from './Components/Home'
 import Sheet from './Components/Sheet'
+import Calender from './Components/Calender'
 import MobileHome from './Components/MobileHome';
 
 const App = () => {
@@ -36,6 +37,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={renderHomeComponent()} />
         <Route path="/sheet" element={<Sheet />} />
+        <Route path="/cal" element={<Calender />} />
       </Routes>
     </Router>
   )

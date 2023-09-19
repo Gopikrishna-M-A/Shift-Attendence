@@ -54,7 +54,11 @@ const ShiftCalendar = ({year, month, emp1, emp2, emp3}) => {
     return row
   });
 
-
+  tableData.forEach(item => {
+    const date = new Date(item.Date);
+    const options = { weekday: 'short' };
+    item.Day = date.toLocaleDateString('en-US', options);
+  });
 
   const columns = [
     {
@@ -90,6 +94,7 @@ const ShiftCalendar = ({year, month, emp1, emp2, emp3}) => {
 
   ];
 
+  
 
   
 
