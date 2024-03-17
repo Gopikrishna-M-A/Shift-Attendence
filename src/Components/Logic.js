@@ -9,7 +9,7 @@ function generateSchedule(year, month, employees) {
       event: "Republic Day"
     },
     {
-      date: "April 7",
+      date: "March 29",
       day: "Friday",
       event: "Good Friday"
     },
@@ -68,8 +68,8 @@ function generateSchedule(year, month, employees) {
       [employees[0], employees[0], employees[2]], //saturday
     ],
     [
-      [employees[0], employees[0], employees[2]], //sunday
-      [employees[1], employees[1], employees[0]], //monday
+      [employees[1], employees[1], employees[0]], //sunday
+      [employees[0], employees[0], employees[2]], //monday
       [employees[2], employees[0], employees[1]], //tuesday
       [employees[2], employees[0], employees[1]], //wednesday
       [employees[2], employees[0], employees[1]], //thursday
@@ -77,13 +77,13 @@ function generateSchedule(year, month, employees) {
       [employees[2], employees[2], employees[1]], //ssturday
     ],
     [
-      [employees[2], employees[2], employees[1]], //sunday
-      [employees[0], employees[0], employees[2]], //monday
+      [employees[1], employees[1], employees[0]], //sunday
+      [employees[2], employees[2], employees[1]], //monday 
       [employees[1], employees[2], employees[0]], //tuesday
       [employees[1], employees[2], employees[0]], //wednesday
       [employees[1], employees[2], employees[0]], //thursday
       [employees[1], employees[2], employees[0]], //friday
-      [employees[1], employees[1], employees[0]], //saturday
+      [employees[0], employees[0], employees[2]], //saturday
     ],
   ];
 
