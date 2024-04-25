@@ -1,89 +1,86 @@
+import publicHolidays from './publicHolidays'
+
 function generateSchedule(year, month, employees) {
   const shifts = ["Morning", "Evening", "Night"];
   const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
-  const publicHolidays = [
-    {
-      date: "January 26",
-      day: "Thursday",
-      event: "Republic Day"
-    },
-    {
-      date: "March 29",
-      day: "Friday",
-      event: "Good Friday"
-    },
-    {
-      date: "April 15",
-      day: "Saturday",
-      event: "Vishu"
-    },
-    {
-      date: "April 21",
-      day: "Friday",
-      event: "Namzan"
-    },
-    {
-      date: "August 15",
-      day: "Tuesday",
-      event: "Independence Day"
-    },
-    {
-      date: "August 29",
-      day: "Tuesday",
-      event: "Onam"
-    },
-    {
-      date: "October 02",
-      day: "Monday",
-      event: "Gandhi Jayanti"
-    },
-    {
-      date: "October 23",
-      day: "Monday",
-      event: "Mahanavami"
-    },
-    {
-      date: "October 24",
-      day: "Tuesday",
-      event: "Vijayadashami"
-    },
-    {
-      date: "December 25",
-      day: "Monday",
-      event: "Christmas"
-    }
-  ];
+  // const publicHolidays = [
+  //   {
+  //     date: "January 26",
+  //     day: "Thursday",
+  //     event: "Republic Day"
+  //   },
+  //   {
+  //     date: "March 29",
+  //     day: "Friday",
+  //     event: "Good Friday"
+  //   },
+  //   {
+  //     date: "April 10",
+  //     day: "Wednesday",
+  //     event: "Ramzan"
+  //   },
+  //   {
+  //     date: "August 15",
+  //     day: "Tuesday",
+  //     event: "Independence Day"
+  //   },
+  //   {
+  //     date: "August 29",
+  //     day: "Tuesday",
+  //     event: "Onam"
+  //   },
+  //   {
+  //     date: "October 02",
+  //     day: "Monday",
+  //     event: "Gandhi Jayanti"
+  //   },
+  //   {
+  //     date: "October 23",
+  //     day: "Monday",
+  //     event: "Mahanavami"
+  //   },
+  //   {
+  //     date: "October 24",
+  //     day: "Tuesday",
+  //     event: "Vijayadashami"
+  //   },
+  //   {
+  //     date: "December 25",
+  //     day: "Monday",
+  //     event: "Christmas"
+  //   }
+  // ];
 
  
 
   const patterns = [
     [
-      [employees[1], employees[1], employees[0]], //sunday
-      [employees[2], employees[2], employees[1]], //monday
+      [employees[1], employees[1], employees[2]], //sunday 0
+      [employees[0], employees[0], employees[2]], //monday 1
       [employees[0], employees[1], employees[2]], //tuesday
       [employees[0], employees[1], employees[2]], //wednesday
       [employees[0], employees[1], employees[2]], //thursday
       [employees[0], employees[1], employees[2]], //friday
-      [employees[0], employees[0], employees[2]], //saturday
+      [employees[0], employees[1], employees[1]], //saturday 2
     ],
     [
-      [employees[1], employees[1], employees[0]], //sunday
-      [employees[0], employees[0], employees[2]], //monday
+      [employees[0], employees[0], employees[1]], //sunday 2
+      [employees[2], employees[2], employees[1]], //monday 0
       [employees[2], employees[0], employees[1]], //tuesday
       [employees[2], employees[0], employees[1]], //wednesday
       [employees[2], employees[0], employees[1]], //thursday
       [employees[2], employees[0], employees[1]], //friday
-      [employees[2], employees[2], employees[1]], //ssturday
+      [employees[2], employees[2], employees[0]], //ssturday 1
     ],
     [
-      [employees[1], employees[1], employees[0]], //sunday
-      [employees[2], employees[2], employees[1]], //monday 
+      [employees[2], employees[0], employees[0]], //sunday 1
+      [employees[1], employees[0], employees[0]], //monday 2
       [employees[1], employees[2], employees[0]], //tuesday
       [employees[1], employees[2], employees[0]], //wednesday
       [employees[1], employees[2], employees[0]], //thursday
       [employees[1], employees[2], employees[0]], //friday
-      [employees[0], employees[0], employees[2]], //saturday
+      [employees[1], employees[2], employees[2]], //saturday 0
     ],
   ];
 
@@ -113,7 +110,7 @@ function generateSchedule(year, month, employees) {
   //     });
   //   }
   // }
-
+  let patternIndex = 0;
   
   for (let day = 1; day <= daysInMonth; day++) {
     const date = new Date(year, month - 1, day);
@@ -124,8 +121,11 @@ function generateSchedule(year, month, employees) {
     
     // Check if the current date is a public holiday
     const publicHoliday = publicHolidays.find((holiday) => holiday.date === formattedDate);
+    // console.log("publicHoliday",publicHoliday,dayOfWeek);
 
-    let patternIndex = 0;
+
+
+
 
     if (publicHoliday) {
       if (dayOfWeek !== 0 && dayOfWeek !== 6 && dayOfWeek !== 1) {
@@ -140,10 +140,18 @@ function generateSchedule(year, month, employees) {
           }
       }
     }
-    if (dayOfWeekCopy){
+    if (dayOfWeekCopy != null){
       dayOfWeek = dayOfWeekCopy
+
     }
-    patternIndex = Math.floor(day / 7) % 3;
+
+    if (dayOfWeek === 0) {
+      patternIndex = (patternIndex + 1) % 3;
+    }
+    // console.log("day pattern",day,patternIndex);
+
+
+    // patternIndex = Math.floor(day / 7) % 3;
 
     const pattern = patterns[patternIndex];
     const dayPattern = pattern[dayOfWeek];

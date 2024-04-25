@@ -1,37 +1,79 @@
-*{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
     padding: 0;
     margin: 0;
     box-sizing: 0;
+    font-family: "Poppins", sans-serif;
+
+}
+.home{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f2f2f2;
 }
 
-.page{
-    padding: 30px 0 ;
+.page {
+    padding: 50px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-}
 
-.input-for-sheet{
+}
+h4{
+    color: rgb(0, 0, 0);
+}
+p{
+    color: rgb(97, 97, 97);
+}
+nav{
+    width: 100%;
+    /* height: 50px; */
+    padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #fbfbfb;
+    box-shadow: 0px 10px 15px -18px rgba(0,0,0,0.1);
+
+}
+.input-for-sheet {
+    background: #fff;
     width: 100%;
     max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1);
+    padding: 20px 30px;
+    border-radius: 12px;
 }
-.form{
+
+.form {
     width: 100%;
 }
-.Form-item{
+
+.Form-item {
     width: 100%;
 }
-.section{
+
+.section {
     position: relative;
 }
 
-.download-btn{
+.download-btn {
     top: 0;
     right: 0;
     position: absolute;
 }
-.mail-btn{
+
+.mail-btn {
     top: 0;
     left: 0;
     position: absolute;
@@ -40,8 +82,21 @@
 
 
 
-@media print{
-    .download-btn, .mail-btn{
+@media print {
+
+    .download-btn,
+    .mail-btn {
         display: none;
     }
+}
+
+
+.even-week-row {
+    background-color: #f2f2f2;
+    /* Lighter background color for even weeks */
+}
+
+.odd-week-row {
+    background-color: #ffffff;
+    /* White background color for odd weeks */
 }
