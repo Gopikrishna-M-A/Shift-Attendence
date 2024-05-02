@@ -4,85 +4,102 @@ function generateSchedule(year, month, employees) {
   const shifts = ["Morning", "Evening", "Night"];
   const daysOfWeek = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 
-  // const publicHolidays = [
-  //   {
-  //     date: "January 26",
-  //     day: "Thursday",
-  //     event: "Republic Day"
-  //   },
-  //   {
-  //     date: "March 29",
-  //     day: "Friday",
-  //     event: "Good Friday"
-  //   },
-  //   {
-  //     date: "April 10",
-  //     day: "Wednesday",
-  //     event: "Ramzan"
-  //   },
-  //   {
-  //     date: "August 15",
-  //     day: "Tuesday",
-  //     event: "Independence Day"
-  //   },
-  //   {
-  //     date: "August 29",
-  //     day: "Tuesday",
-  //     event: "Onam"
-  //   },
-  //   {
-  //     date: "October 02",
-  //     day: "Monday",
-  //     event: "Gandhi Jayanti"
-  //   },
-  //   {
-  //     date: "October 23",
-  //     day: "Monday",
-  //     event: "Mahanavami"
-  //   },
-  //   {
-  //     date: "October 24",
-  //     day: "Tuesday",
-  //     event: "Vijayadashami"
-  //   },
-  //   {
-  //     date: "December 25",
-  //     day: "Monday",
-  //     event: "Christmas"
-  //   }
+
+  // const patterns = [
+  //   [
+  //     [employees[1], employees[1], employees[2]], //sunday 0
+  //     [employees[0], employees[0], employees[2]], //monday 1
+  //     [employees[0], employees[1], employees[2]], //tuesday
+  //     [employees[0], employees[1], employees[2]], //wednesday
+  //     [employees[0], employees[1], employees[2]], //thursday
+  //     [employees[0], employees[1], employees[2]], //friday
+  //     [employees[0], employees[1], employees[1]], //saturday 2
+  //   ],
+  //   [
+  //     [employees[0], employees[0], employees[1]], //sunday 2
+  //     [employees[2], employees[2], employees[1]], //monday 0
+  //     [employees[2], employees[0], employees[1]], //tuesday
+  //     [employees[2], employees[0], employees[1]], //wednesday
+  //     [employees[2], employees[0], employees[1]], //thursday
+  //     [employees[2], employees[0], employees[1]], //friday
+  //     [employees[2], employees[2], employees[0]], //ssturday 1
+  //   ],
+  //   [
+  //     [employees[2], employees[0], employees[0]], //sunday 1
+  //     [employees[1], employees[0], employees[0]], //monday 2
+  //     [employees[1], employees[2], employees[0]], //tuesday
+  //     [employees[1], employees[2], employees[0]], //wednesday
+  //     [employees[1], employees[2], employees[0]], //thursday
+  //     [employees[1], employees[2], employees[0]], //friday
+  //     [employees[1], employees[2], employees[2]], //saturday 0
+  //   ],
   // ];
 
- 
+
 
   const patterns = [
     [
-      [employees[1], employees[1], employees[2]], //sunday 0
+      [employees[1], employees[2], employees[2]], //sunday 0
       [employees[0], employees[0], employees[2]], //monday 1
-      [employees[0], employees[1], employees[2]], //tuesday
-      [employees[0], employees[1], employees[2]], //wednesday
-      [employees[0], employees[1], employees[2]], //thursday
-      [employees[0], employees[1], employees[2]], //friday
-      [employees[0], employees[1], employees[1]], //saturday 2
-    ],
-    [
-      [employees[0], employees[0], employees[1]], //sunday 2
-      [employees[2], employees[2], employees[1]], //monday 0
-      [employees[2], employees[0], employees[1]], //tuesday
-      [employees[2], employees[0], employees[1]], //wednesday
-      [employees[2], employees[0], employees[1]], //thursday
-      [employees[2], employees[0], employees[1]], //friday
-      [employees[2], employees[2], employees[0]], //ssturday 1
-    ],
-    [
-      [employees[2], employees[0], employees[0]], //sunday 1
-      [employees[1], employees[0], employees[0]], //monday 2
       [employees[1], employees[2], employees[0]], //tuesday
       [employees[1], employees[2], employees[0]], //wednesday
       [employees[1], employees[2], employees[0]], //thursday
       [employees[1], employees[2], employees[0]], //friday
-      [employees[1], employees[2], employees[2]], //saturday 0
+      [employees[1], employees[1], employees[0]], //saturday 2
     ],
+    [
+      [employees[2], employees[0], employees[0]], //sunday 1
+      [employees[1], employees[1], employees[0]], //monday 2
+      [employees[2], employees[0], employees[1]], //tuesday
+      [employees[2], employees[0], employees[1]], //wednesday
+      [employees[2], employees[0], employees[1]], //thursday
+      [employees[2], employees[0], employees[1]], //friday
+      [employees[2], employees[2], employees[1]], //ssturday 0
+    ],
+    [
+      [employees[0], employees[1], employees[1]], //sunday 2
+      [employees[2], employees[2], employees[1]], //monday 0
+      [employees[0], employees[1], employees[2]], //tuesday
+      [employees[0], employees[1], employees[2]], //wednesday
+      [employees[0], employees[1], employees[2]], //thursday
+      [employees[0], employees[1], employees[2]], //friday
+      [employees[0], employees[0], employees[2]], //saturday 1
+    ],
+   
   ];
+
+
+
+  // const patterns = [
+  //   [
+  //     [employees[1], employees[1], employees[0]], //sunday 0
+  //     [employees[2], employees[2], employees[1]], //monday 1
+  //     [employees[2], employees[0], employees[1]], //tuesday
+  //     [employees[2], employees[0], employees[1]], //wednesday
+  //     [employees[2], employees[0], employees[1]], //thursday
+  //     [employees[2], employees[0], employees[1]], //friday
+  //     [employees[2], employees[2], employees[0]], //saturday 2
+  //   ],
+  //   [
+  //     [employees[1], employees[1], employees[2]], //sunday 2
+  //     [employees[0], employees[0], employees[2]], //monday 0
+  //     [employees[0], employees[1], employees[2]], //tuesday
+  //     [employees[0], employees[1], employees[2]], //wednesday
+  //     [employees[0], employees[1], employees[2]], //thursday
+  //     [employees[0], employees[1], employees[2]], //friday
+  //     [employees[1], employees[1], employees[0]], //ssturday 1
+  //   ],
+  //   [
+  //     [employees[2], employees[0], employees[0]], //sunday 1
+  //     [employees[1], employees[0], employees[0]], //monday 2
+  //     [employees[1], employees[2], employees[0]], //tuesday
+  //     [employees[1], employees[2], employees[0]], //wednesday
+  //     [employees[1], employees[2], employees[0]], //thursday
+  //     [employees[1], employees[2], employees[0]], //friday
+  //     [employees[1], employees[2], employees[2]], //saturday 0
+  //   ],
+  // ];
+  
 
   const schedule = [];
 
